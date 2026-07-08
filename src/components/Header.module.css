@@ -1,0 +1,191 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header.scrolled {
+  padding: 12px 0;
+  background: rgba(247, 245, 240, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 24px rgba(91, 63, 217, 0.06);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+/* ══════════════════════════════════════
+   Custom Typographic Logo (MA+)
+   ══════════════════════════════════════ */
+.logo {
+  display: inline-flex;
+  transition: opacity 150ms ease;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.logo:hover { opacity: 0.8; }
+
+.logoContainer {
+  position: relative;
+  display: flex;
+  align-items: center; /* Better vertical alignment with navbar items */
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 1.4rem; /* Reduced to match navbar scale */
+  line-height: 1;
+  color: var(--accent-vivid);
+  letter-spacing: -0.05em;
+}
+
+.logoM {
+  position: relative;
+  z-index: 2;
+  /* Gradient fades out on the right edge where it overlaps A */
+  background: linear-gradient(90deg, var(--accent-vivid) 55%, rgba(123, 97, 255, 0.4) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Add a soft white/light halo effect around the M to separate it smoothly */
+  filter: drop-shadow(2px 0 4px rgba(255, 255, 255, 0.9));
+}
+
+.logoA {
+  position: relative;
+  z-index: 1;
+  margin-left: -0.32em; /* Overlap firmly under the M */
+  color: var(--accent-vivid); /* Solid purple for A */
+}
+
+.logoStar {
+  color: var(--accent-vivid);
+  margin-left: 2px;
+  transform: translate(2px, -9px); /* Position closer to top-right of A */
+  animation: logoTwinkle 4s ease-in-out infinite;
+}
+
+@keyframes logoTwinkle {
+  0%, 100% { opacity: 0.6; transform: translate(2px, -9px) scale(0.85); }
+  50%      { opacity: 1;   transform: translate(2px, -9px) scale(1.1); }
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navLink {
+  position: relative;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-body);
+  border-radius: var(--radius-full);
+  transition: all 150ms ease;
+}
+
+.navLink:hover {
+  color: var(--text-main);
+  background: rgba(91, 63, 217, 0.06);
+}
+
+.navLink.active {
+  color: var(--accent-vivid);
+  font-weight: 600;
+}
+
+.activeDot {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--accent-vivid);
+  border-radius: 50%;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Mobile toggle */
+.menuToggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  color: var(--text-body);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  transition: all 150ms ease;
+}
+
+.menuToggle:hover {
+  background: var(--accent-faint);
+  color: var(--accent-vivid);
+}
+
+/* Mobile menu */
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px 20px;
+  background: rgba(247, 245, 240, 0.97);
+  backdrop-filter: blur(24px);
+  border-top: 1px solid var(--border-light);
+  animation: slideDown 200ms ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mobileLink {
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-body);
+  transition: all 150ms ease;
+}
+
+.mobileLink:hover,
+.mobileLink.mobileActive {
+  background: var(--accent-faint);
+  color: var(--accent-vivid);
+  font-weight: 600;
+}
+
+.mobileCta {
+  margin-top: 8px;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav { display: none; }
+  .menuToggle { display: flex; }
+}
+
+@media (max-width: 480px) {
+  .actions .btn-cta { display: none; }
+}

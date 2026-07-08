@@ -1,0 +1,428 @@
+/* ══════════════════════════════════════
+   Hero Illustration
+   ══════════════════════════════════════ */
+
+/* ─── Container ─── */
+.container {
+  width: 100%;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 900px;
+  position: relative;
+}
+
+/* ─── Floater (bob animation, separate from tilt) ─── */
+.floater {
+  animation: bob 5.5s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+
+/* ─── Scene (3D tilt via Framer Motion — no CSS animation!) ─── */
+.scene {
+  position: relative;
+  width: 420px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+/* ─── Glow ─── */
+.glow {
+  position: absolute;
+  width: 320px;
+  height: 200px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(123, 97, 255, 0.35) 0%,
+    rgba(196, 181, 253, 0.15) 50%,
+    transparent 80%
+  );
+  filter: blur(30px);
+  border-radius: 50%;
+  transform: translateZ(-80px);
+}
+
+/* ─── Orbit Rings (two crossing ellipses) ─── */
+.orbitA,
+.orbitB {
+  position: absolute;
+  border: 1.5px solid rgba(91, 63, 217, 0.3); /* Made much more visible from 0.1 */
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orbitA {
+  width: 440px;
+  height: 350px;
+  transform: translateZ(-30px) rotateX(65deg) rotateZ(-15deg);
+}
+
+.orbitB {
+  width: 400px;
+  height: 320px;
+  transform: translateZ(-30px) rotateX(65deg) rotateZ(35deg);
+}
+
+/* ══════════════════════════════════════
+   Browser Card
+   ══════════════════════════════════════ */
+.card {
+  position: relative;
+  width: 310px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow:
+    0 40px 80px rgba(91, 63, 217, 0.13),
+    0 8px 24px rgba(91, 63, 217, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  overflow: hidden;
+  transform: translateZ(40px);
+}
+
+.cardBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 14px 10px;
+  background: rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dot { width: 9px; height: 9px; border-radius: 50%; }
+.dot[data-color='purple'] { background: var(--accent-vivid); }
+.dot[data-color='yellow'] { background: #FEBC2E; }
+.dot[data-color='faint']  { background: rgba(91, 63, 217, 0.12); }
+
+.cardBody {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cardImage {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(196, 181, 253, 0.2);
+}
+
+.mountainSvg { width: 100%; height: auto; display: block; }
+
+.cardText { display: flex; flex-direction: column; gap: 8px; }
+
+/* ══════════════════════════════════════
+   3D Orbit Systems
+   ══════════════════════════════════════ */
+.orbitSystem {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.sys1 {
+  --radius: 160px; /* Scaled down to compensate for translateZ perspective scale */
+  top: 48%; left: 35%;
+  width: calc(var(--radius) * 2);
+  height: calc(var(--radius) * 2);
+  transform: translate(-50%, -50%) translateZ(220px) rotateX(60deg) rotateY(15deg);
+}
+
+.sys2 {
+  --radius: 135px; /* Scaled down to compensate for translateZ perspective scale */
+  top: 55%; left: 65%;
+  width: calc(var(--radius) * 2);
+  height: calc(var(--radius) * 2);
+  transform: translate(-50%, -50%) translateZ(220px) rotateX(60deg) rotateY(-18deg);
+}
+
+.orbitRingBorder {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 1px solid rgba(123, 97, 255, 0.35);
+  border-radius: 50%;
+  /* Fade the bottom half (behind card) using a mask */
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.15) 70%, rgba(0,0,0,0.15) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.15) 70%, rgba(0,0,0,0.15) 100%);
+}
+
+.orbitRotator {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  animation: orbitSpin 45s linear infinite;
+}
+
+@keyframes orbitSpin {
+  from { transform: rotateZ(0deg); }
+  to   { transform: rotateZ(360deg); }
+}
+
+.chipContainer {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) translateX(var(--radius));
+  transform-style: preserve-3d;
+  /* Add float animation so they bob up and down while orbiting */
+  animation: floatScene 6s ease-in-out infinite;
+}
+
+.chipCounter {
+  transform-style: preserve-3d;
+  /* Must match orbitSpin duration */
+  animation: orbitCounter 45s linear infinite;
+}
+
+/* 
+  Counter rotation cancels out:
+  1. The Z rotation of the rotator (-360deg)
+  2. The Y rotation of the system (-20deg or +20deg)
+  3. The X rotation of the system (-60deg)
+  This keeps the chip perfectly upright facing the camera!
+*/
+.counter1 {
+  animation-name: orbitCounter1;
+}
+@keyframes orbitCounter1 {
+  from { transform: rotateZ(0deg) rotateY(-15deg) rotateX(-60deg); }
+  to   { transform: rotateZ(-360deg) rotateY(-15deg) rotateX(-60deg); }
+}
+
+.counter2 {
+  animation-name: orbitCounter2;
+}
+@keyframes orbitCounter2 {
+  from { transform: rotateZ(0deg) rotateY(18deg) rotateX(-60deg); }
+  to   { transform: rotateZ(-360deg) rotateY(18deg) rotateX(-60deg); }
+}
+
+.textLine {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(91, 63, 217, 0.1);
+}
+
+.cardBtn {
+  width: 80px;
+  height: 24px;
+  margin-top: 4px;
+  background: linear-gradient(135deg, var(--accent-medium) 0%, var(--accent-vivid) 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(91, 63, 217, 0.22);
+}
+
+/* ══════════════════════════════════════
+   Orbit Wrappers — MOBILE (CSS keyframes)
+   ══════════════════════════════════════ */
+.orbitWrapMobile {
+  position: absolute;
+  width: 360px; /* Increased from 300px */
+  height: 360px; /* Increased from 300px */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  pointer-events: none;
+  animation: mobileOrbit 24s linear infinite;
+  /* stagger via custom property set inline */
+  animation-delay: calc(var(--orbit-offset, 0deg) / 360 * -24s);
+  z-index: 10; /* Ensure on top */
+}
+
+@keyframes mobileOrbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.chipCounterRotateMobile {
+  animation: counterOrbitMobile 24s linear infinite;
+  animation-delay: calc(var(--orbit-offset, 0deg) / 360 * -24s);
+}
+
+@keyframes counterOrbitMobile {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(-360deg); }
+}
+
+/* ══════════════════════════════════════
+   Glassmorphism Chips (shared base)
+   ══════════════════════════════════════ */
+.chipGlass {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Reduced transparency (was 0.55) */
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 1);
+  box-shadow:
+    0 14px 40px rgba(91, 63, 217, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--accent-vivid);
+  /* Translate centering is now handled by chipContainer */
+}
+
+/* ─── Code chip: </> ─── */
+.chipCode {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+}
+
+.chipCodeText {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-vivid);
+  font-family: var(--font-mono, monospace);
+}
+
+/* ─── Design chip: Palette (glass purple) ─── */
+.chipDesign {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  /* Less transparent, more purple */
+  background: rgba(123, 97, 255, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow:
+    0 14px 36px rgba(91, 63, 217, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  color: #fff !important;
+}
+
+/* ─── Typography chip: Aa ─── */
+.chipAa {
+  width: 76px;
+  height: 76px;
+  border-radius: 20px;
+}
+
+.chipAaText {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--accent-medium);
+}
+
+/* ══════════════════════════════════════
+   Sparkles
+   ══════════════════════════════════════ */
+.sparkle {
+  position: absolute;
+  color: rgba(91, 63, 217, 0.4);
+  /* Use a CSS variable for Z-depth so it doesn't get overridden by keyframes */
+  --sz: 20px;
+  transform: translateZ(var(--sz));
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.sparkle1 { top: 8%;  left: 28%; width: 12px; height: 12px; animation-delay: 0s; }
+.sparkle2 { top: 5%;  right: 18%; width: 10px; height: 10px; animation-delay: -1s; color: rgba(91, 63, 217, 0.3); }
+.sparkle3 { bottom: 20%; left: 10%; width: 8px; height: 8px; animation-delay: -2s; color: rgba(91, 63, 217, 0.25); }
+
+/* Sparkle 4: Far outside the card on top right, pushed into background */
+.sparkle4 { 
+  top: -15%; 
+  right: -25%; 
+  width: 18px; 
+  height: 18px; 
+  animation-delay: -0.7s; 
+  color: rgba(91, 63, 217, 0.45);
+  --sz: -40px; /* Push into background */
+}
+
+/* Sparkle 5: Outside right, lower down, smaller */
+.sparkle5 {
+  top: 45%;
+  right: -35%;
+  width: 11px;
+  height: 11px;
+  animation-delay: -1.4s;
+  color: rgba(91, 63, 217, 0.35);
+  --sz: -20px;
+}
+
+/* Sparkle 6: Outside right, far bottom, medium */
+.sparkle6 {
+  bottom: 5%;
+  right: -15%;
+  width: 15px;
+  height: 15px;
+  animation-delay: -2.2s;
+  color: rgba(91, 63, 217, 0.4);
+  --sz: -30px;
+}
+
+.desktopOnly {
+  display: block;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; transform: translateZ(var(--sz)) scale(1); }
+  50%      { opacity: 1;   transform: translateZ(var(--sz)) scale(1.3); }
+}
+
+/* ══════════════════════════════════════
+   Responsive
+   ══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .scene { width: 380px; height: 360px; }
+  .card { width: 280px; }
+  .orbitA { width: 400px; height: 320px; }
+  .orbitB { width: 360px; height: 290px; }
+  .orbitWrap { width: 360px; height: 360px; }
+}
+
+@media (max-width: 768px) {
+  .desktopOnly { display: none !important; }
+
+  .sys1 { --radius: 120px; left: 30%; }
+  .sys2 { --radius: 100px; left: 70%; }
+
+  .container { height: 380px; perspective: 700px; }
+  .scene { width: 320px; height: 320px; }
+  .card  { width: 240px; }
+  .orbitA { width: 340px; height: 270px; }
+  .orbitB { width: 310px; height: 250px; }
+  .orbitWrapMobile { width: 310px; height: 310px; } /* Reduced from 360px to prevent clipping */
+
+  .chipCode  { width: 48px; height: 48px; }
+  .chipDesign { width: 44px; height: 44px; }
+  .chipAa    { width: 60px; height: 60px; }
+  .chipAaText { font-size: 1.5rem; }
+  .chipCodeText { font-size: 0.95rem; }
+
+  .cardBody { padding: 14px; gap: 10px; }
+}
+
+@media (max-width: 480px) {
+  .container { height: 320px; }
+  .scene { width: 280px; height: 280px; }
+  .card  { width: 210px; }
+  .orbitA { width: 290px; height: 230px; }
+  .orbitB { width: 260px; height: 210px; }
+  .orbitWrapMobile { width: 260px; height: 260px; } /* Kept small for narrow phones */
+
+  .chipCode { width: 42px; height: 42px; }
+  .chipDesign { width: 38px; height: 38px; }
+  .chipAa { width: 52px; height: 52px; }
+  .chipAaText { font-size: 1.3rem; }
+  .chipCodeText { font-size: 0.85rem; }
+
+  .cardBody { padding: 12px; gap: 8px; }
+  .cardBtn { width: 60px; height: 18px; }
+}
