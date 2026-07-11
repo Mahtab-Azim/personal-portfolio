@@ -11,6 +11,7 @@ export interface Project {
   description: string;
   technologies: string[];
   imageGradient: string;
+  image?: string;
   liveUrl?: string;
   githubUrl?: string;
   date: string;
@@ -55,6 +56,7 @@ export async function getProjects(): Promise<Project[]> {
         description: data.description || '',
         technologies: data.technologies || [],
         imageGradient: data.imageGradient || 'linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%)',
+        image: data.image || '',
         liveUrl: data.liveUrl || '',
         githubUrl: data.githubUrl || '',
         date: data.date || '',
@@ -84,6 +86,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
     description: data.description || '',
     technologies: data.technologies || [],
     imageGradient: data.imageGradient || 'linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%)',
+    image: data.image || '',
     liveUrl: data.liveUrl || '',
     githubUrl: data.githubUrl || '',
     date: data.date || '',

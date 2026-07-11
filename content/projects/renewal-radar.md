@@ -2,10 +2,11 @@
 title: "Renewal Radar"
 slug: "renewal-radar"
 description: "SaaS tool for monitoring domain renewals with smart alerts and insights."
-technologies: ["Next.js", "TypeScript", "PostgreSQL"]
+technologies: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"]
 imageGradient: "linear-gradient(135deg, #059669 0%, #10b981 100%)"
-liveUrl: "https://renewalradar.com"
-githubUrl: "https://github.com/mahtab-azim/renewal-radar"
+image: "/images/renewal_radar_mockup.jpg"
+liveUrl: ""
+githubUrl: "https://github.com/Mahtab-Azim/renewal-radar-backend"
 date: "2026-04-28"
 featured: true
 ---

@@ -4,7 +4,8 @@ slug: "zentro"
 description: "A minimalist dashboard for teams to manage projects, tasks and performance."
 technologies: ["Next.js", "TypeScript", "Tailwind CSS"]
 imageGradient: "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)"
-liveUrl: "https://zentro.dev"
+image: "/images/zentro_dashboard_v2.jpg"
+liveUrl: "https://zentro-front.vercel.app/"
 githubUrl: "https://github.com/mahtab-azim/zentro"
 date: "2026-05-15"
 featured: true

@@ -196,8 +196,8 @@
 
 .aboutGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  grid-template-columns: 1.15fr 1fr; /* Balanced width to allow skills to fit on one line while keeping card wide */
+  gap: 40px;
   align-items: center;
 }
 
@@ -214,6 +214,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  z-index: 2; /* Middle layer: behind monogram, above rings */
 }
 
 /* MA monogram */
@@ -226,6 +227,7 @@
   padding-left: 52px; /* Space for the floating monogram half overlap */
 }
 
+.aboutRingsWrap,
 .aboutMonogramWrap {
   position: absolute;
   left: 0;
@@ -233,11 +235,18 @@
   transform: translateY(-50%);
   width: 104px;
   height: 104px;
-  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
   transform-style: preserve-3d;
+}
+
+.aboutRingsWrap {
+  z-index: 1; /* Bottom layer: behind card */
+}
+
+.aboutMonogramWrap {
+  z-index: 3; /* Top layer: above card */
 }
 
 /* Glassy Monogram Circle */
@@ -245,17 +254,23 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  background: radial-gradient(circle at 30% 30%, rgba(240, 235, 255, 0.95), rgba(220, 210, 255, 0.85));
+  border: 1.5px solid rgba(91, 63, 217, 0.55); /* Darker and slightly thicker purple border */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow:
-    0 10px 30px rgba(91, 63, 217, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 12px 35px rgba(91, 63, 217, 0.2),
+    inset 0 2px 5px rgba(255, 255, 255, 0.8);
   z-index: 2;
+  animation: floatBadge 6s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 /* Monogram Typographic Logo */
@@ -296,26 +311,82 @@
 
 /* Monogram Orbiting Rings */
 .aboutMonogramRing,
-.aboutMonogramRing2 {
+.aboutMonogramRing2,
+.aboutMonogramRing3 {
   position: absolute;
   top: 50%;
   left: 50%;
-  border: 1px solid rgba(123, 97, 255, 0.25);
+  border: 1px solid rgba(138, 115, 255, 0.2);
   border-radius: 50%;
   pointer-events: none;
   z-index: 1;
 }
 
+.aboutMonogramRing::after,
+.aboutMonogramRing2::after,
+.aboutMonogramRing3::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--accent-vivid);
+  border-radius: 50%;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 6px var(--accent-vivid);
+}
+
 .aboutMonogramRing {
-  width: 130px;
-  height: 70px;
+  width: 310px;
+  height: 170px;
   transform: translate(-50%, -50%) rotate(25deg);
+  animation: orbitRotate1 20s linear infinite;
 }
 
 .aboutMonogramRing2 {
-  width: 130px;
-  height: 70px;
+  width: 320px;
+  height: 190px;
   transform: translate(-50%, -50%) rotate(-35deg);
+  animation: orbitRotate2 25s linear infinite reverse;
+}
+
+.aboutMonogramRing3 {
+  width: 230px;
+  height: 280px;
+  transform: translate(-50%, -50%) rotate(75deg);
+  animation: orbitRotate3 30s linear infinite;
+}
+
+@keyframes orbitRotate1 {
+  0% { transform: translate(-50%, -50%) rotate(25deg); }
+  100% { transform: translate(-50%, -50%) rotate(385deg); }
+}
+@keyframes orbitRotate2 {
+  0% { transform: translate(-50%, -50%) rotate(-35deg); }
+  100% { transform: translate(-50%, -50%) rotate(325deg); }
+}
+@keyframes orbitRotate3 {
+  0% { transform: translate(-50%, -50%) rotate(75deg); }
+  100% { transform: translate(-50%, -50%) rotate(435deg); }
+}
+
+.monogramSparkle1 {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  color: var(--accent-medium);
+  z-index: 3;
+  animation: logoTwinkle 3s ease-in-out infinite;
+}
+
+.monogramSparkle2 {
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  color: var(--accent-vivid);
+  z-index: 3;
+  animation: logoTwinkle 4s ease-in-out infinite reverse;
 }
 
 .buildingItems { display: flex; flex-direction: column; gap: 6px; }
@@ -332,8 +403,9 @@
 }
 
 .itemLive {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(34, 197, 94, 0.18);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(91, 63, 217, 0.2); /* Soft purple border */
+  box-shadow: 0 4px 24px rgba(138, 115, 255, 0.25); /* Light purple halo */
 }
 
 .itemIcon {
@@ -410,13 +482,13 @@
 .aboutContent { display: flex; flex-direction: column; gap: 16px; }
 .aboutText { font-size: 1.1rem; color: var(--text-body); line-height: 1.8; }
 
-.skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
 
 .skillBadge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 7px 14px;
+  gap: 6px;
+  padding: 6px 12px;
   background: var(--bg-card);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-full);
@@ -495,24 +567,56 @@
   max-width: 340px;
 }
 
-.decoShapeWrap { margin-top: 24px; }
-
-.decoShape {
-  width: 110px;
-  height: 110px;
-  background: linear-gradient(135deg, var(--accent-pale) 0%, var(--accent-faint) 100%);
-  border-radius: 28px;
-  transform: rotate(12deg);
-  box-shadow: var(--shadow-md);
-  position: relative;
+.decoShapeWrap { 
+  margin-top: 30px; 
+  margin-left: 50px;
+  position: relative; 
+  width: 240px; 
+  height: 180px; 
 }
-.decoShape::after {
-  content: '';
+
+.decoShapeBottom, .decoShapeTop {
   position: absolute;
-  inset: 14px;
-  background: linear-gradient(135deg, var(--accent-soft) 0%, var(--accent-pale) 100%);
-  border-radius: 18px;
-  transform: rotate(-8deg);
+  width: 160px;
+  height: 180px;
+  border-radius: 28px;
+  transform: rotateX(60deg) rotateZ(45deg);
+}
+
+.decoShapeBottom {
+  background: #8b5cf6; /* Softer, lighter purple */
+  top: 30px;
+  left: 30px;
+  /* Stacked box-shadows using the same color to avoid looking two-colored */
+  box-shadow: 
+    0 1px 0 #8b5cf6,
+    0 2px 0 #8b5cf6,
+    0 3px 0 #8b5cf6,
+    0 4px 0 #8b5cf6,
+    0 5px 0 #8b5cf6,
+    0 6px 0 #8b5cf6,
+    0 7px 0 #8b5cf6,
+    0 8px 0 #8b5cf6,
+    -15px 30px 40px rgba(139, 92, 246, 0.4);
+}
+
+.decoShapeTop {
+  background: rgba(167, 139, 250, 0.25); /* Softer purple glass */
+  top: -15px;
+  left: -15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-top-color: rgba(255, 255, 255, 0.9);
+  border-left-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Extrude glass thickness */
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.4),
+    0 2px 0 rgba(255, 255, 255, 0.3),
+    0 3px 0 rgba(255, 255, 255, 0.2),
+    0 4px 0 rgba(255, 255, 255, 0.1),
+    0 5px 0 rgba(255, 255, 255, 0.05),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .pillarsGrid {
@@ -605,17 +709,35 @@
 
   .aboutGrid { grid-template-columns: 1fr; gap: 36px; }
   .buildingCardWrapper {
-    flex-direction: column;
-    align-items: center;
-    padding-left: 0 !important;
+    display: block;
+    padding-left: 20px !important; /* Indent for the monogram on left */
+    padding-top: 40px; /* Space for the monogram overlapping on top */
+  }
+  .aboutMonogramWrap,
+  .aboutRingsWrap {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    transform: none;
+    margin: 0;
   }
   .aboutMonogramWrap {
-    position: relative;
-    left: auto;
-    top: auto;
-    transform: none;
-    margin-bottom: -32px; /* Overlap beautifully on top on mobile */
-    z-index: 11;
+    z-index: 11; /* Above card on mobile */
+  }
+  .aboutRingsWrap {
+    z-index: 1; /* Keep rings behind the card */
+  }
+  .aboutMonogramRing {
+    width: 200px;
+    height: 100px;
+  }
+  .aboutMonogramRing2 {
+    width: 220px;
+    height: 110px;
+  }
+  .aboutMonogramRing3 {
+    width: 160px;
+    height: 160px;
   }
   .about { padding-top: 90px !important; }
   .projects,

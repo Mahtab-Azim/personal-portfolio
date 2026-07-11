@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowUpRight, ArrowRight, Code2, Palette, Zap,
   Circle, Radio, FileText, Server, ChevronDown,
@@ -154,7 +155,6 @@ export default async function HomePage() {
               <HeroIllustration />
             </div>
           </div>
-
         </div>
       </section>
 
@@ -173,8 +173,8 @@ export default async function HomePage() {
               d="M0,80 C480,110 960,20 1440,40"
               fill="none"
               stroke="#FFFFFF"
-              strokeWidth="3.5"
-              style={{ filter: 'drop-shadow(0px 2px 4px rgba(255,255,255,0.85))' }}
+              strokeWidth="4"
+              style={{ filter: 'drop-shadow(0px -2px 10px rgba(255,255,255,1)) drop-shadow(0px 4px 15px rgba(255,255,255,0.8))' }}
             />
           </svg>
         </div>
@@ -185,10 +185,18 @@ export default async function HomePage() {
             {/* Left Column: Floating Monogram + Glassy Card */}
             <div className={styles.buildingCardWrapper}>
               
-              {/* Floating Monogram with Orbiting Rings */}
-              <div className={styles.aboutMonogramWrap}>
+              {/* Orbiting Rings (Behind Card) */}
+              <div className={styles.aboutRingsWrap}>
                 <div className={styles.aboutMonogramRing} />
                 <div className={styles.aboutMonogramRing2} />
+                <div className={styles.aboutMonogramRing3} />
+              </div>
+
+              {/* Floating Monogram (Above Card) */}
+              <div className={styles.aboutMonogramWrap}>
+                <div className={styles.monogramSparkle1}><LogoStar size={10} /></div>
+                <div className={styles.monogramSparkle2}><LogoStar size={6} /></div>
+                
                 <div className={styles.aboutMonogram}>
                   <div className={styles.monogramLogo}>
                     <span className={styles.monoM}>M</span>
@@ -201,7 +209,7 @@ export default async function HomePage() {
               </div>
 
               {/* Glassy building card */}
-              <div className={styles.buildingCard}>
+              <div className={styles.buildingCard} id="currently-building">
                 <span className="section-eyebrow">Currently building</span>
 
               <div className={styles.buildingItems}>
@@ -328,7 +336,8 @@ export default async function HomePage() {
                 not only beautiful but also usable, accessible and scalable.
               </p>
               <div className={styles.decoShapeWrap} aria-hidden="true">
-                <div className={styles.decoShape} />
+                <div className={styles.decoShapeBottom} />
+                <div className={styles.decoShapeTop} />
               </div>
             </div>
             <div className={styles.pillarsGrid}>

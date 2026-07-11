@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import type { Project } from '@/lib/content';
 import styles from './ProjectCard.module.css';
@@ -8,13 +9,32 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const targetHref = project.liveUrl || project.githubUrl || `/projects/${project.slug}`;
+  const isExternal = !!project.liveUrl || !!project.githubUrl;
+
   return (
-    <Link href={`/projects/${project.slug}`} className={styles.card} aria-label={`View ${project.title} project`}>
+    <Link 
+      href={targetHref} 
+      className={styles.card} 
+      aria-label={`View ${project.title} project`}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+    >
       {/* Image / gradient area */}
-      <div className={styles.thumbnail} style={{ background: project.imageGradient }}>
-        <div className={styles.thumbnailInner}>
-          <span className={styles.thumbnailTitle}>{project.title}</span>
-        </div>
+      <div className={styles.thumbnail} style={!project.image ? { background: project.imageGradient } : undefined}>
+        {project.image ? (
+          <Image 
+            src={project.image} 
+            alt={`${project.title} screenshot`} 
+            fill 
+            className={styles.thumbnailImage} 
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        ) : (
+          <div className={styles.thumbnailInner}>
+            <span className={styles.thumbnailTitle}>{project.title}</span>
+          </div>
+        )}
         <div className={styles.thumbnailDeco} aria-hidden="true" />
       </div>
 
@@ -29,7 +49,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <p className={styles.description}>{project.description}</p>
         <div className={styles.tags}>
           {project.technologies.map((tech) => (
-            <span key={tech} className="tag">{tech}</span>
+            <span key={tech} className="tag">
+              {tech}
+            </span>
           ))}
         </div>
       </div>
