@@ -1,8 +1,8 @@
 ---
 title: "Zentro"
 slug: "zentro"
-description: "A minimalist dashboard for teams to manage projects, tasks and performance."
-technologies: ["Next.js", "TypeScript", "Tailwind CSS"]
+description: "A modern AI-powered CRM platform for managing customers, tasks, and business workflows, built with Next.js and TypeScript."
+technologies: ["Next.js", "TypeScript", "RestAPI", "Docker", "Git", Vitest ]
 imageGradient: "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)"
 image: "/images/zentro_dashboard_v2.jpg"
 liveUrl: "https://zentro-front.vercel.app/"

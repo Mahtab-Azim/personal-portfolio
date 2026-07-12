@@ -1,0 +1,50 @@
+.main {
+  padding-top: 180px;
+  padding-bottom: 120px;
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: 80px;
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 24px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+  }
+}
+
+.projectWrapper {
+  animation: fadeUp 800ms ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

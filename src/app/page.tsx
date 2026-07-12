@@ -98,7 +98,7 @@ const designPillars = [
 
 export default async function HomePage() {
   const [allProjects, allPosts] = await Promise.all([getProjects(), getBlogPosts()]);
-  const featuredProjects = allProjects.slice(0, 3);
+  const featuredProjects = allProjects.filter(p => p.featured).slice(0, 3);
   const latestPosts = allPosts.slice(0, 3);
 
   return (
@@ -249,11 +249,10 @@ export default async function HomePage() {
             <div className={styles.aboutContent}>
               <span className="section-eyebrow">About me</span>
               <p className={styles.aboutText}>
-                I'm a front-end developer and product design enthusiast who enjoys
-                turning ideas into beautiful, functional and user-centered products.
+                I’m a front-end developer focused on building clean, responsive and user-friendly web interfaces with React, Next.js and TypeScript.
               </p>
               <p className={styles.aboutText}>
-                I care about details, performance and creating meaningful experiences.
+                I care about the product behind the interface — how it feels, how it works, and how clearly it solves a real problem. I enjoy shaping ideas into polished digital experiences, from visual direction to front-end implementation.
               </p>
               <div className={styles.skills} role="list" aria-label="Skills">
                 {skills.map((skill) => (
@@ -301,7 +300,9 @@ export default async function HomePage() {
             </Link>
           </div>
           <div className={styles.projectsGrid}>
-            {featuredProjects.map((p) => <ProjectCard key={p.slug} project={p} />)}
+            {featuredProjects.map((project, index) => (
+              <ProjectCard key={project.slug} project={project} priority={index === 0} />
+            ))}
           </div>
         </div>
       </section>

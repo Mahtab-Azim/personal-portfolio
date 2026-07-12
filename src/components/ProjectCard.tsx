@@ -6,9 +6,10 @@ import styles from './ProjectCard.module.css';
 
 interface ProjectCardProps {
   project: Project;
+  priority?: boolean;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, priority = false }: ProjectCardProps) {
   const targetHref = project.liveUrl || project.githubUrl || `/projects/${project.slug}`;
   const isExternal = !!project.liveUrl || !!project.githubUrl;
 
@@ -29,6 +30,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             fill 
             className={styles.thumbnailImage} 
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={priority}
           />
         ) : (
           <div className={styles.thumbnailInner}>

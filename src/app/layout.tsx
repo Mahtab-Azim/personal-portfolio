@@ -1,7 +1,20 @@
 import type { Metadata } from 'next';
+import { Plus_Jakarta_Sans, Fira_Code } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import './globals.css';
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
+});
+
+const firaCode = Fira_Code({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -35,16 +48,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <head>
-        {/* Preload Inter from Google Fonts — offline-safe with display=swap */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={`${plusJakarta.variable} ${firaCode.variable}`}>
       <body>
         <Header />
         <main>{children}</main>

@@ -13,41 +13,35 @@ const IconLinkedin = () => (
     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
   </svg>
 );
-const IconTwitterX = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-  </svg>
-);
 const IconGlobe = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
     <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
   </svg>
 );
-const IconDribbble = () => (
+const IconTelegram = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4.006-.814zm-9.77-2.25c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.176zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.477 0-.945.04-1.4.092zm8.084 1.972c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.316-6.386z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.686c.223-.195-.054-.285-.346-.086l-6.4 4.02-2.76-.865c-.595-.185-.606-.595.126-.884l10.796-4.159c.5-.184.954.116.804.896z"/>
   </svg>
 );
-const IconYoutube = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+
+const LogoStar = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
   </svg>
 );
 
 const socialLinks = [
-  { href: 'https://github.com/mahtab-azim', Icon: IconGithub, label: 'GitHub' },
-  { href: 'https://linkedin.com/in/mahtab-azimzadeh', Icon: IconLinkedin, label: 'LinkedIn' },
-  { href: 'https://twitter.com/mahtab_dev', Icon: IconTwitterX, label: 'X (Twitter)' },
+  { href: 'https://github.com/Mahtab-Azim', Icon: IconGithub, label: 'GitHub' },
+  { href: 'https://www.linkedin.com/in/mahtab-abdolazimzadeh/', Icon: IconLinkedin, label: 'LinkedIn' },
   { href: 'https://mahtab.dev', Icon: IconGlobe, label: 'Website' },
-  { href: 'https://dribbble.com/mahtab', Icon: IconDribbble, label: 'Dribbble' },
-  { href: 'https://youtube.com/@mahtab', Icon: IconYoutube, label: 'YouTube' },
+  { href: 'https://t.me/Itsmahtech', Icon: IconTelegram, label: 'Telegram' },
 ];
 
 const navLinks = [
   { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },
-  { label: 'About', href: '/#about' },
+  { label: 'About', href: '/about' },
   { label: 'Contact', href: '/#contact' },
 ];
 
@@ -58,10 +52,10 @@ export default function Footer() {
         <div className={styles.top}>
           {/* Left: CTA */}
           <div className={styles.cta}>
-            <p className={styles.ctaLabel}>Let's work together</p>
+            <p className={styles.ctaLabel}>Got a project in mind?</p>
             <h2 className={styles.ctaHeading}>
-              Let's build something<br />
-              great together <span className={styles.ctaPlus}>+</span>
+              Let's create something<br />
+              extraordinary
             </h2>
           </div>
 
@@ -102,9 +96,14 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className={styles.bottom}>
-          <Link href="/" className={styles.bottomLogo}>
-            <span className={styles.logoText}>MA</span>
-            <sup className={styles.logoPlus}>+</sup>
+          <Link href="/" className={styles.bottomLogo} aria-label="Mahtab Azimzadeh — Home">
+            <div className={styles.logoContainer}>
+              <span className={styles.logoM}>M</span>
+              <span className={styles.logoA}>A</span>
+              <span className={styles.logoStar}>
+                <LogoStar />
+              </span>
+            </div>
           </Link>
 
           <nav className={styles.bottomNav} aria-label="Footer navigation">
