@@ -1,8 +1,8 @@
 ---
 title: "Renewal Radar"
 slug: "renewal-radar"
-description: "SaaS tool for monitoring domain renewals with smart alerts and insights."
-technologies: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"]
+description: "A full-stack renewal tracking app for managing domains, subscriptions, and recurring services. Currently being built as a backend-focused project with reminder logic, deadline tracking, and organized renewal workflows."
+technologies: ["Next.js", "TypeScript", "Node.js", "Express.js", "PostgreSQL", "Prisma"]
 imageGradient: "linear-gradient(135deg, #059669 0%, #10b981 100%)"
 image: "/images/renewal_radar_mockup.jpg"
 liveUrl: ""

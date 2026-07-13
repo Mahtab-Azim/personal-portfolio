@@ -1,8 +1,8 @@
 ---
 title: "Zentro"
 slug: "zentro"
-description: "A modern AI-powered CRM platform for managing customers, tasks, and business workflows, built with Next.js and TypeScript."
-technologies: ["Next.js", "TypeScript", "RestAPI", "Docker", "Git", Vitest ]
+description: "A CRM-style dashboard for managing customers, tasks, communication, and workflows. I designed and developed the front-end experience from idea to interface, with a clean UI and AI-assisted workflow concepts."
+technologies: ["Next.js", "TypeScript", "REST API", "Docker", "Git", Vitest ]
 imageGradient: "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)"
 image: "/images/zentro_dashboard_v2.jpg"
 liveUrl: "https://zentro-front.vercel.app/"

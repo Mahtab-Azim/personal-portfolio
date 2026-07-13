@@ -2,7 +2,7 @@
 title: "Aixom"
 slug: "aixom"
 description: "Front-end development for Aixum IT Group's official bilingual website. Focused on a smooth, dynamic user experience with real-time API integrations."
-technologies: ["Vue.js", "JavaScript", "REST APIs", "Tailwind CSS"]
+technologies: ["Vue.js", "JavaScript", "REST API", "Tailwind CSS"]
 image: "/images/aixom_mockup.png"
 imageGradient: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)"
 date: "2024-03-01"

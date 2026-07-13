@@ -1,8 +1,8 @@
 ---
 title: "Personal Portfolio"
 slug: "portfolio"
-description: "My personal digital space, designed and developed from scratch to showcase my product design and engineering capabilities."
-technologies: ["Next.js", "React", "CSS Modules", "Markdown"]
+description: "A personal portfolio and blog built with Next.js to showcase my front-end projects, design-minded approach, and technical writing through a clean, responsive and soft visual interface."
+technologies: ["Next.js", "Typescript", "MDX", "Framer Motion", "Tailwind CSS", "Markdown"]
 image: "/images/portfolio_mockup.jpg"
 imageGradient: "radial-gradient(circle at top right, #5b3fd9 0%, #1e1147 100%)"
 githubUrl: "https://github.com/Mahtab-Azim/personal-portfolio"

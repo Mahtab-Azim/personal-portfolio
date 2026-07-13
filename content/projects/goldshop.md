@@ -2,7 +2,7 @@
 title: "Golderin"
 slug: "goldshop"
 description: "A bilingual gold price tracking application built with Nuxt.js, Tailwind CSS, and ApexCharts. Fetches live market data from a REST API and visualizes price trends through responsive."
-technologies: ["Vue.js", "REST API", "Chart.js", "Tailwind.css", "Pinia"]
+technologies: ["Vue.js", "REST API", "Chart.js", "Tailwind CSS", "Pinia"]
 imageGradient: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)"
 image: "/images/goldshop_mockup.jpg"
 liveUrl: ""
