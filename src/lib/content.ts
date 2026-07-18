@@ -3,7 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
-const contentDirectory = path.join(process.cwd(), 'content');
+// contentDirectory will be defined inside functions so process.cwd() is not evaluated at edge runtime startup
 
 export interface Project {
   title: string;
@@ -38,6 +38,7 @@ function ensureDirectory(dirPath: string) {
 }
 
 export async function getProjects(): Promise<Project[]> {
+  const contentDirectory = path.join(process.cwd(), 'content');
   const projectsDir = path.join(contentDirectory, 'projects');
   ensureDirectory(projectsDir);
   const fileNames = fs.readdirSync(projectsDir);
@@ -69,6 +70,7 @@ export async function getProjects(): Promise<Project[]> {
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
+  const contentDirectory = path.join(process.cwd(), 'content');
   const projectsDir = path.join(contentDirectory, 'projects');
   const fullPath = path.join(projectsDir, `${slug}.md`);
   
@@ -96,6 +98,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
+  const contentDirectory = path.join(process.cwd(), 'content');
   const blogDir = path.join(contentDirectory, 'blog');
   ensureDirectory(blogDir);
   const fileNames = fs.readdirSync(blogDir);
@@ -124,6 +127,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+  const contentDirectory = path.join(process.cwd(), 'content');
   const blogDir = path.join(contentDirectory, 'blog');
   const fullPath = path.join(blogDir, `${slug}.md`);
   
