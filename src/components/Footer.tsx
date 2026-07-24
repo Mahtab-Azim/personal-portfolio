@@ -34,7 +34,7 @@ const LogoStar = () => (
 const socialLinks = [
   { href: 'https://github.com/Mahtab-Azim', Icon: IconGithub, label: 'GitHub' },
   { href: 'https://www.linkedin.com/in/mahtab-abdolazimzadeh/', Icon: IconLinkedin, label: 'LinkedIn' },
-  { href: 'https://mahtab.dev', Icon: IconGlobe, label: 'Website' },
+  { href: 'https://mahtabazim.ir', Icon: IconGlobe, label: 'Website' },
   { href: 'https://t.me/Itsmahtech', Icon: IconTelegram, label: 'Telegram' },
 ];
 
@@ -54,16 +54,16 @@ export default function Footer() {
           <div className={styles.cta}>
             <p className={styles.ctaLabel}>Got a project in mind?</p>
             <h2 className={styles.ctaHeading}>
-              Let's create something<br />
+              Let&apos;s create something<br />
               extraordinary
             </h2>
           </div>
 
           {/* Middle: Contact info */}
           <div className={styles.contactInfo}>
-            <a href="mailto:hello@mahtab.dev" className={styles.contactItem}>
+            <a href="mailto:mahtabazimzadeh@proton.me" className={styles.contactItem}>
               <Mail size={16} strokeWidth={1.75} />
-              hello@mahtab.dev
+              mahtabazim.ir
             </a>
             <div className={styles.contactItem}>
               <MapPin size={16} strokeWidth={1.75} />

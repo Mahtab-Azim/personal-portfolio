@@ -76,6 +76,7 @@
    ══════════════════════════════════════ */
 .card {
   position: relative;
+  z-index: 4;
   width: 310px;
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.9);
@@ -128,6 +129,7 @@
 .orbitSystem {
   position: absolute;
   top: 50%; left: 50%;
+  z-index: 1;
   transform-style: preserve-3d;
   pointer-events: none;
 }
@@ -137,7 +139,7 @@
   top: 48%; left: 35%;
   width: calc(var(--radius) * 2);
   height: calc(var(--radius) * 2);
-  transform: translate(-50%, -50%) translateZ(220px) rotateX(60deg) rotateY(15deg);
+  transform: translate(-50%, -50%) translateZ(-20px) rotateX(60deg) rotateY(15deg);
 }
 
 .sys2 {
@@ -145,7 +147,7 @@
   top: 55%; left: 65%;
   width: calc(var(--radius) * 2);
   height: calc(var(--radius) * 2);
-  transform: translate(-50%, -50%) translateZ(220px) rotateX(60deg) rotateY(-18deg);
+  transform: translate(-50%, -50%) translateZ(-20px) rotateX(60deg) rotateY(-18deg);
 }
 
 .orbitRingBorder {
@@ -154,9 +156,10 @@
   width: 100%; height: 100%;
   border: 1px solid rgba(123, 97, 255, 0.35);
   border-radius: 50%;
-  /* Fade the bottom half (behind card) using a mask */
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.15) 70%, rgba(0,0,0,0.15) 100%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.15) 70%, rgba(0,0,0,0.15) 100%);
+  opacity: 0.75;
+  /* Fade the underside where the card overlaps, so the ring reads as passing under the card */
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 38%, rgba(0,0,0,0.22) 72%, rgba(0,0,0,0.22) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 38%, rgba(0,0,0,0.22) 72%, rgba(0,0,0,0.22) 100%);
 }
 
 .orbitRotator {

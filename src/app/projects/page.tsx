@@ -16,8 +16,8 @@ export default async function ProjectsPage() {
       <div className={`container ${styles.header}`}>
         <h1 className={`text-heading ${styles.title}`}>Selected Work</h1>
         <p className={styles.subtitle}>
-          A showcase of products I've designed and engineered. From interactive platforms 
-          to complex CRM dashboards, here's what I've been working on.
+          A showcase of products I&apos;ve designed and engineered. From interactive platforms 
+          to complex CRM dashboards, here&apos;s what I&apos;ve been working on.
         </p>
       </div>
 
