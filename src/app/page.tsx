@@ -26,8 +26,21 @@ const ReactIcon = () => (
 
 const NextjsIcon = () => (
   <svg width="14" height="14" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="90" cy="90" r="90" fill="black"/>
-    <path d="M149.508 157.52L69.142 54H54v72h14.4V68.219l68.79 88.081a90.3 90.3 0 0012.318-18.78zM126 54h-14.4v72H126V54z" fill="white"/>
+    <circle cx="90" cy="90" r="86" stroke="currentColor" strokeWidth="8"/>
+    <path d="M149.508 157.52L69.142 54H54v72h14.4V68.219l68.79 88.081a90.3 90.3 0 0012.318-18.78zM126 54h-14.4v72H126V54z" fill="currentColor"/>
+  </svg>
+);
+
+const VueIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 256 221" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M204.8 0H256L128 220.8L0 0h97.92L128 51.2L157.44 0h47.36z" fill="#41B883"/>
+    <path d="M0 0l128 220.8L256 0h-51.2L128 132.48L50.56 0H0z" fill="#34495E"/>
+  </svg>
+);
+
+const NuxtIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 256 168" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M143.618 167.834h95.166c3.023 0 5.992-.777 8.61-2.253a17.1 17.1 0 006.302-6.157 16.8 16.8 0 002.304-8.408c0-2.951-.795-5.85-2.306-8.407L189.778 33.263a17.1 17.1 0 00-6.3-6.155 17.5 17.5 0 00-8.608-2.253c-3.023 0-5.991.777-8.609 2.253a17.1 17.1 0 00-6.3 6.155l-16.343 27.678-31.95-54.09a17.1 17.1 0 00-6.304-6.155A17.5 17.5 0 0096.754 0c-3.024 0-5.992.777-8.61 2.253a17.1 17.1 0 00-6.303 6.155L2.306 142.609A16.8 16.8 0 000 151.016c0 2.951.794 5.85 2.305 8.408a17.1 17.1 0 006.303 6.157 17.5 17.5 0 008.61 2.253h59.737c23.667 0 41.14-10.28 53.15-30.185l29.152-49.32 15.615-26.4 46.87 79.505h-62.48zm-67.36-26.428-41.688-.01 62.5-105.82 31.191 52.916-20.878 35.354c-7.976 13.03-17.037 17.56-31.125 17.56z" fill="#00DC82"/>
   </svg>
 );
 
@@ -62,7 +75,9 @@ export const metadata: Metadata = {
 
 const skills = [
   { label: 'React', color: '#61DAFB', icon: ReactIcon },
-  { label: 'Next.js', color: '#000000', icon: NextjsIcon },
+  { label: 'Next.js', color: 'var(--text-body)', icon: NextjsIcon },
+  { label: 'Vue.js', color: '#41B883', icon: VueIcon },
+  { label: 'Nuxt.js', color: '#00DC82', icon: NuxtIcon },
   { label: 'TypeScript', color: '#3178C6', icon: TypeScriptIcon },
   { label: 'UI/UX', color: '#F24E1E', icon: FigmaIcon },
   { label: 'Product Design', color: '#FF6B6B', icon: Layers },
