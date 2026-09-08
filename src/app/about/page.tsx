@@ -49,28 +49,6 @@ export default function AboutPage() {
               </li>
             </ul>
           </div>
-          
-          <div className={styles.listBlock}>
-            <h3 className={styles.listTitle}>Currently exploring</h3>
-            <ul className={styles.checkList}>
-              <li className={styles.checkListItem}>
-                <CheckCircle2 size={20} className={styles.checkIcon} />
-                <span>Node.js and Express</span>
-              </li>
-              <li className={styles.checkListItem}>
-                <CheckCircle2 size={20} className={styles.checkIcon} />
-                <span>PostgreSQL and Prisma</span>
-              </li>
-              <li className={styles.checkListItem}>
-                <CheckCircle2 size={20} className={styles.checkIcon} />
-                <span>Backend architecture basics</span>
-              </li>
-              <li className={styles.checkListItem}>
-                <CheckCircle2 size={20} className={styles.checkIcon} />
-                <span>Building more complete full-stack products</span>
-              </li>
-            </ul>
-          </div>
         </div>
 
         {/* Design & Product Mindset */}

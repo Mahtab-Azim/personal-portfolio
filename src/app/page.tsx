@@ -72,19 +72,19 @@ const currentlyBuilding = [
   {
     icon: Radio,
     title: 'Building Renewal Radar',
-    subtitle: 'Domain insights & monitoring tool',
+    subtitle: 'Domain monitoring & renewal alerts',
     isLive: true,
   },
   {
     icon: FileText,
-    title: 'Writing frontend notes',
-    subtitle: 'Sharing learnings & best practices',
+    title: 'Writing on the blog',
+    subtitle: 'Notes from projects I actually shipped',
     isLive: false,
   },
   {
     icon: Server,
-    title: 'Exploring Node.js backend',
-    subtitle: 'APIs, data modeling & performance',
+    title: 'Shipping full-stack features',
+    subtitle: 'Node.js, Express & PostgreSQL',
     isLive: false,
   },
 ];

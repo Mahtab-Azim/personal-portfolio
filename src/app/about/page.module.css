@@ -67,12 +67,6 @@
   margin-bottom: 40px;
 }
 
-@media (min-width: 768px) {
-  .listGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 .listBlock {
   background: var(--bg-card);
   border: 1px solid var(--border-light);
