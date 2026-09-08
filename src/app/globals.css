@@ -31,6 +31,9 @@
    CSS VARIABLES (for use in CSS Modules)
    ============================================ */
 :root {
+  /* Light-only design; opts out of the browser's forced dark mode */
+  color-scheme: light;
+
   --bg-primary: #F7F5F0;
   --bg-secondary: #EEEAE4;
   --bg-card: rgba(255, 255, 255, 0.75);
