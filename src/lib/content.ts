@@ -150,7 +150,7 @@ const projects: Project[] = [
 const blogPosts: BlogPost[] = [
   {
     title: 'How to Speed Up the Initial Load of a Large App',
-    slug: 'how-to-speed-up-the-initial-load-of-a-large-app',
+    slug: 'faster-initial-load',
     description:
       'A question I was asked in a front-end interview: if you have a large app, how do you make the first load faster? Here is the full answer, from measuring first to SSR, code splitting, caching, and app shells.',
     date: '2026-09-15',
