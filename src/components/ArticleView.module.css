@@ -14,14 +14,11 @@
 
 .option {
   padding: 6px 16px;
-  border: none;
   border-radius: var(--radius-full);
-  background: transparent;
   color: var(--text-muted);
-  font-family: inherit;
   font-size: 0.85rem;
   font-weight: 600;
-  cursor: pointer;
+  text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -35,12 +32,9 @@
   color: #fff;
 }
 
-.faTitle {
+.faHeading {
   font-family: var(--font-fa), var(--font-sans), sans-serif;
-  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
-  color: var(--text-main);
   line-height: 1.7;
-  margin-bottom: 20px;
 }
 
 /* Persian body: RTL flow + a font with Farsi glyphs. Scoped to this block

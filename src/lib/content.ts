@@ -22,6 +22,7 @@ export interface BlogPost {
   imageGradient: string;
   contentHtml?: string;
   titleFa?: string;
+  descriptionFa?: string;
   contentHtmlFa?: string;
 }
 
@@ -189,6 +190,8 @@ const blogPosts: BlogPost[] = [
       <p>Start by measuring, then render early (SSR/SSG), ship less JavaScript (code splitting), deliver assets from closer and in smaller formats (CDN, images), and keep the user looking at something meaningful while the rest loads (app shell). That combination is what makes a large app feel fast on the very first visit.</p>
     `,
     titleFa: 'چطور لود اولیه‌ی سایت را در یک اپ بزرگ سریع‌تر کنیم؟',
+    descriptionFa:
+      'سوالی که توی مصاحبه‌ی فرانت‌اند از من پرسیده شد: اگه یه اپ بزرگ داشته باشیم، چطور لود اولیه رو سریع‌تر کنیم؟ جواب کامل، از اندازه‌گیری تا SSR، code splitting، کش و app shell.',
     contentHtmlFa: `
       <p>اگه یه اپ بزرگ داشته باشیم و بخوایم همون اول که کاربر وارد می‌شه لود اولیه سریع‌تر باشه، باید چیکار کنیم؟</p>
       <p>این یکی از سوالاتیه که توی مصاحبه‌ی فرانت‌اند دولوپر از من پرسیده شد. جواب، ترکیبی از این موارده.</p>

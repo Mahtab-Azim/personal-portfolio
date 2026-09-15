@@ -5,37 +5,38 @@ import ArticleView from '@/components/ArticleView';
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
-  return posts.map((post) => ({ slug: post.slug }));
+  return posts.filter((post) => post.contentHtmlFa).map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getBlogPostBySlug(slug);
 
-  if (!post) {
+  if (!post?.contentHtmlFa) {
     return {
       title: 'Post Not Found',
     };
   }
 
   return {
-    title: post.title,
-    description: post.description,
+    title: post.titleFa ?? post.title,
+    description: post.descriptionFa ?? post.description,
     alternates: {
-      canonical: `/blog/${post.slug}`,
-      ...(post.contentHtmlFa
-        ? {
-            languages: {
-              en: `/blog/${post.slug}`,
-              fa: `/blog/${post.slug}/fa`,
-            },
-          }
-        : {}),
+      canonical: `/blog/${post.slug}/fa`,
+      languages: {
+        en: `/blog/${post.slug}`,
+        fa: `/blog/${post.slug}/fa`,
+      },
+    },
+    openGraph: {
+      locale: 'fa_IR',
+      title: post.titleFa ?? post.title,
+      description: post.descriptionFa ?? post.description,
     },
   };
 }
 
-export default async function BlogDetailPage({
+export default async function BlogDetailPageFa({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -43,9 +44,9 @@ export default async function BlogDetailPage({
   const { slug } = await params;
   const post = await getBlogPostBySlug(slug);
 
-  if (!post) {
+  if (!post?.contentHtmlFa) {
     notFound();
   }
 
-  return <ArticleView post={post} lang="en" />;
+  return <ArticleView post={post} lang="fa" />;
 }
