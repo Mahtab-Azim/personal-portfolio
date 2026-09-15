@@ -4,7 +4,7 @@ import BlogCard from '@/components/BlogCard';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Blog | Mahtab Azimzadeh',
+  title: 'Blog',
   description: 'Thoughts, tutorials, and insights on front-end development and product design.',
 };
 

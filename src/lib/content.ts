@@ -21,6 +21,8 @@ export interface BlogPost {
   category: string;
   imageGradient: string;
   contentHtml?: string;
+  titleFa?: string;
+  contentHtmlFa?: string;
 }
 
 const projects: Project[] = [
@@ -147,17 +149,76 @@ const projects: Project[] = [
 
 const blogPosts: BlogPost[] = [
   {
-    title: 'Designing My Personal Portfolio with Next.js',
-    slug: 'designing-my-personal-portfolio-with-nextjs',
+    title: 'How to Speed Up the Initial Load of a Large App',
+    slug: 'how-to-speed-up-the-initial-load-of-a-large-app',
     description:
-      'The design decisions behind my portfolio: soft visuals, product-focused structure, and a blog-first architecture with Next.js.',
-    date: '2026-07-22',
-    readTime: '4 min read',
-    category: 'Portfolio',
-    imageGradient: 'linear-gradient(135deg, #f5f3ff 0%, #c4b5fd 45%, #7c3aed 100%)',
+      'A question I was asked in a front-end interview: if you have a large app, how do you make the first load faster? Here is the full answer, from measuring first to SSR, code splitting, caching, and app shells.',
+    date: '2026-09-15',
+    readTime: '3 min read',
+    category: 'Performance',
+    imageGradient: 'linear-gradient(135deg, #5a487a 0%, #6d5794 55%, #9485b7 100%)',
     contentHtml: `
-      <p>This article is a short starter note about the process of designing and building my personal portfolio with Next.js.</p>
-      <p>The goal of the website is to feel minimal, personal, and product-focused while still being useful as a real portfolio and blog.</p>
+      <p>If you have a large app and you want the very first load — the moment a user lands on your site — to feel fast, what do you do?</p>
+      <p>This is one of the questions I was asked in a front-end developer interview. The answer is not a single trick; it is a combination of the following.</p>
+
+      <h2>0. Measure before you optimize</h2>
+      <p>Before doing anything, find out where it is actually slow. Use Lighthouse or the browser's Performance tab. Metrics like <strong>LCP</strong> and <strong>TTI</strong> tell you whether the problem is the initial render or the amount of JavaScript you are shipping. Optimizing without measuring is just guessing.</p>
+
+      <h2>1. Server-Side Rendering (SSR) or SSG</h2>
+      <p>The server sends ready-made HTML, so the user sees content immediately. JavaScript arrives afterwards and hydration makes the page interactive. This is exactly what Next.js and Nuxt.js do.</p>
+
+      <h2>2. Lazy loading and route-based code splitting</h2>
+      <p>Instead of shipping the whole app, load only the page the user is currently looking at. Next.js and Nuxt.js do this automatically per route.</p>
+
+      <h2>3. Critical CSS and resource hints</h2>
+      <p>Inline only the CSS needed for above-the-fold content, and use <code>preconnect</code>, <code>dns-prefetch</code>, and <code>preload</code> for fonts and critical APIs so the browser starts fetching them earlier.</p>
+
+      <h2>4. CDN and edge caching</h2>
+      <p>Serve static files (JS, CSS, images) from the server geographically closest to the user.</p>
+
+      <h2>5. Image optimization</h2>
+      <p>Use modern formats (WebP/AVIF), lazy-load images below the fold, and serve responsive sizes instead of one oversized file.</p>
+
+      <h2>6. Cut down third-party scripts</h2>
+      <p>Analytics, chatbots, ads — these are very often the single biggest reason large apps feel slow. Audit them and drop or defer what you do not need on first load.</p>
+
+      <h2>7. Skeletons and an app shell</h2>
+      <p>Show a lightweight interface instantly while the real data is on its way. It is the experience you see on apps like Digikala or Snapp: the layout is there before the content is.</p>
+
+      <h2>In short</h2>
+      <p>Start by measuring, then render early (SSR/SSG), ship less JavaScript (code splitting), deliver assets from closer and in smaller formats (CDN, images), and keep the user looking at something meaningful while the rest loads (app shell). That combination is what makes a large app feel fast on the very first visit.</p>
+    `,
+    titleFa: 'چطور لود اولیه‌ی سایت را در یک اپ بزرگ سریع‌تر کنیم؟',
+    contentHtmlFa: `
+      <p>اگه یه اپ بزرگ داشته باشیم و بخوایم همون اول که کاربر وارد می‌شه لود اولیه سریع‌تر باشه، باید چیکار کنیم؟</p>
+      <p>این یکی از سوالاتیه که توی مصاحبه‌ی فرانت‌اند دولوپر از من پرسیده شد. جواب، ترکیبی از این موارده.</p>
+
+      <h2>۰. قبل از هر کاری، اندازه‌گیری</h2>
+      <p>قبل از هر کاری اول باید ببینیم دقیقاً کجا کنده؛ با Lighthouse یا تب Performance مرورگر. متریک‌هایی مثل <strong>LCP</strong> و <strong>TTI</strong> بهمون می‌گن مشکل از رندر اولیه‌ست یا از حجم جاوااسکریپت.</p>
+
+      <h2>۱. استفاده از SSR یا SSG</h2>
+      <p>سرور HTML خام رو می‌فرسته، کاربر محتوا رو فوراً می‌بینه، بعد جاوااسکریپت میاد و صفحه hydrate و تعاملی می‌شه. این دقیقاً همون کاریه که Next.js و Nuxt.js انجام می‌دن.</p>
+
+      <h2>۲. Lazy Loading و Code Splitting بر اساس route</h2>
+      <p>فقط همون صفحه‌ای که کاربر داره می‌بینتش لود بشه، نه کل اپ. Next.js و Nuxt.js این کار رو خودکار برای هر route انجام می‌دن.</p>
+
+      <h2>۳. Critical CSS و Resource Hints</h2>
+      <p>فقط CSS مورد نیاز بالای صفحه رو inline کن؛ از <code>preconnect</code>، <code>dns-prefetch</code> و <code>preload</code> برای فونت‌ها و API‌های حیاتی استفاده کن.</p>
+
+      <h2>۴. CDN و Edge Caching</h2>
+      <p>فایل‌های استاتیک (JS، CSS، تصاویر) رو از نزدیک‌ترین سرور جغرافیایی به کاربر سرو کن.</p>
+
+      <h2>۵. بهینه‌سازی تصاویر</h2>
+      <p>فرمت‌های مدرن (WebP/AVIF)، lazy loading تصاویر پایین صفحه، و سایز responsive به جای یک فایل بزرگ.</p>
+
+      <h2>۶. کاهش حجم third-party scripts</h2>
+      <p>آنالیتیکس، چت‌بات، تبلیغات — این‌ها اغلب بزرگ‌ترین علت کندی سوپراپ‌ها هستن.</p>
+
+      <h2>۷. Skeleton و App Shell</h2>
+      <p>یه رابط سبک فوری نشون بده تا دیتای واقعی بیاد — تجربه‌ای که توی دیجی‌کالا و اسنپ می‌بینی.</p>
+
+      <h2>جمع‌بندی</h2>
+      <p>اول اندازه‌گیری، بعد رندر زودهنگام (SSR/SSG)، جاوااسکریپت کمتر (code splitting)، رسوندن فایل‌ها از نزدیک‌تر و سبک‌تر (CDN و تصاویر)، و نگه داشتن کاربر با یه رابط معنادار تا بقیه لود بشه (app shell). همین ترکیبه که یه اپ بزرگ رو توی اولین بازدید سریع نشون می‌ده.</p>
     `,
   },
   {

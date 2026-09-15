@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans, Fira_Code } from 'next/font/google';
+import { Plus_Jakarta_Sans, Fira_Code, Vazirmatn } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import './globals.css';
@@ -14,6 +14,13 @@ const firaCode = Fira_Code({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-mono',
+});
+
+// Only used by Persian article bodies; Plus Jakarta Sans has no Farsi glyphs.
+const vazirmatn = Vazirmatn({
+  subsets: ['arabic'],
+  display: 'swap',
+  variable: '--font-fa',
 });
 
 export const metadata: Metadata = {
@@ -48,7 +55,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${firaCode.variable}`}>
+    <html lang="en" className={`${plusJakarta.variable} ${firaCode.variable} ${vazirmatn.variable}`}>
       <body>
         <Header />
         <main>{children}</main>

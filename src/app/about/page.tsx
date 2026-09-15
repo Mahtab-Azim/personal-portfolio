@@ -3,7 +3,7 @@ import { Sparkles, Terminal, CheckCircle2 } from 'lucide-react';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'About | Mahtab Azimzadeh',
+  title: 'About',
   description: 'Front-end developer focused on building clean, thoughtful and user-friendly web interfaces.',
 };
 

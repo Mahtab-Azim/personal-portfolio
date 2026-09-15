@@ -1,0 +1,65 @@
+/* Muted purple, matched to the article's cover gradient. */
+.switcher {
+  --toggle-active: #6d5794;
+
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 28px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+}
+
+.option {
+  padding: 6px 16px;
+  border: none;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.option:hover {
+  color: var(--text-main);
+}
+
+.active,
+.active:hover {
+  background: var(--toggle-active);
+  color: #fff;
+}
+
+.faTitle {
+  font-family: var(--font-fa), var(--font-sans), sans-serif;
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  color: var(--text-main);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* Persian body: RTL flow + a font with Farsi glyphs. Scoped to this block
+   only, so the rest of the site stays LTR and untouched. */
+.rtl {
+  font-family: var(--font-fa), var(--font-sans), sans-serif;
+  text-align: right;
+  line-height: 2.1;
+}
+
+.rtl :global(ul),
+.rtl :global(ol) {
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+.rtl :global(code),
+.rtl :global(pre) {
+  direction: ltr;
+  unicode-bidi: embed;
+  text-align: left;
+}

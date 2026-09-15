@@ -4,7 +4,7 @@ import ProjectCard from '@/components/ProjectCard';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Projects | Mahtab Azimzadeh',
+  title: 'Projects',
   description: 'A collection of my latest work in product design and web development.',
 };
 

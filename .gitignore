@@ -43,3 +43,6 @@ next-env.d.ts
 
 .open-next/
 .wrangler/
+
+# local tooling
+.claude/
