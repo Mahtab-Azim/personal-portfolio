@@ -29,7 +29,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       },
     },
     openGraph: {
+      type: 'article',
       locale: 'fa_IR',
+      url: `/blog/${post.slug}/fa`,
+      title: post.titleFa ?? post.title,
+      description: post.descriptionFa ?? post.description,
+      publishedTime: post.date,
+      authors: ['Mahtab Azimzadeh'],
+    },
+    twitter: {
+      card: 'summary_large_image',
       title: post.titleFa ?? post.title,
       description: post.descriptionFa ?? post.description,
     },

@@ -24,6 +24,8 @@ const vazirmatn = Vazirmatn({
 });
 
 export const metadata: Metadata = {
+  // Resolves every relative canonical/alternate/og URL in the app.
+  metadataBase: new URL('https://mahtabazim.ir'),
   title: {
     default: 'Mahtab Azimzadeh — Front-End Developer & Product Designer',
     template: '%s | Mahtab Azimzadeh',
@@ -31,12 +33,12 @@ export const metadata: Metadata = {
   description:
     'Front-End Developer crafting thoughtful digital products. I build responsive, accessible and delightful web experiences with clean code and a design-minded approach.',
   keywords: ['Front-End Developer', 'Product Designer', 'React', 'Next.js', 'TypeScript', 'UI/UX'],
-  authors: [{ name: 'Mahtab Azimzadeh', url: 'https://mahtab.dev' }],
+  authors: [{ name: 'Mahtab Azimzadeh', url: 'https://mahtabazim.ir' }],
   creator: 'Mahtab Azimzadeh',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://mahtab.dev',
+    url: 'https://mahtabazim.ir',
     title: 'Mahtab Azimzadeh — Front-End Developer & Product Designer',
     description:
       'Front-End Developer crafting thoughtful digital products. Building responsive, accessible and delightful web experiences.',
@@ -46,7 +48,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mahtab Azimzadeh — Front-End Developer & Product Designer',
     description: 'Front-End Developer crafting thoughtful digital products.',
-    creator: '@mahtab_dev',
+    creator: '@mahtab.ir',
   },
   robots: { index: true, follow: true },
 };
