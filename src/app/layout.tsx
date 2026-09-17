@@ -10,17 +10,23 @@ const plusJakarta = Plus_Jakarta_Sans({
   variable: '--font-sans',
 });
 
+// Code blocks only, so it stays out of the critical path: preloading it made
+// every page fetch 36KB it had no glyphs to show.
 const firaCode = Fira_Code({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-mono',
+  preload: false,
 });
 
 // Only used by Persian article bodies; Plus Jakarta Sans has no Farsi glyphs.
+// Declared in the root layout so the variable exists everywhere, but preloading
+// it put 46KB of Farsi glyphs ahead of the text English pages actually render.
 const vazirmatn = Vazirmatn({
   subsets: ['arabic'],
   display: 'swap',
   variable: '--font-fa',
+  preload: false,
 });
 
 export const metadata: Metadata = {
